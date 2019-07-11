@@ -18,8 +18,9 @@ store path to `vendor` directory while `@bin` may store `@vendor/bin`.
 ## General usage
 
 ```php
-$aliases = new Aliases();
-$aliases->set('@root', __DIR__);
+$aliases = new Aliases([
+    '@root' => __DIR__,
+]);
 $aliases->set('@vendor', '@root/vendor');
 $aliases->set('@bin', '@vendor/bin');
 

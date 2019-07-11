@@ -6,6 +6,19 @@ final class Aliases
     private $aliases = [];
 
     /**
+     * @param array $config
+     * @throws \InvalidArgumentException if $path is an invalid alias.
+     * @see set()
+     * @see get()
+     */
+    public function __construct(array $config = [])
+    {
+        foreach ($config as $alias => $path) {
+            $this->set($alias, $path);
+        }
+    }
+
+    /**
      * Registers a path alias.
      *
      * A path alias is a short name representing a long path (a file path, a URL, etc.)
