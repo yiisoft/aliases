@@ -137,31 +137,36 @@ final class Aliases
         if (\is_array($result)) {
             $result = $result['root'];
         }
+        
         return $result;
     }
 
-    /**
-     * @param string $alias
-     * @return array|bool
-     */
-    private function findAlias(string $alias)
+    private function findAlias(string $alias): ?array
     {
         $pos = strpos($alias, '/');
         $root = $pos === false ? $alias : substr($alias, 0, $pos);
 
         if (isset($this->aliases[$root])) {
             if (\is_string($this->aliases[$root])) {
-                return ['root' => $root, 'path' => $pos === false ? $this->aliases[$root] : $this->aliases[$root] . substr($alias, $pos)];
+                return [
+                    'root' => $root,
+                    'path' => $pos === false
+                        ? $this->aliases[$root]
+                        : $this->aliases[$root] . substr($alias, $pos)
+                ];
             }
 
             foreach ($this->aliases[$root] as $name => $path) {
                 if (strpos($alias . '/', $name . '/') === 0) {
-                    return ['root' => $name, 'path' => $path . substr($alias, strlen($name))];
+                    return [
+                        'root' => $name,
+                        'path' => $path . substr($alias, strlen($name))
+                    ];
                 }
             }
         }
 
-        return false;
+        return null;
     }
 
     public function getAll(): array
