@@ -6,11 +6,6 @@ use Yiisoft\Aliases\Aliases;
 
 class AliasesTest extends TestCase
 {
-    /**
-     * @var Aliases
-     */
-    public $aliases;
-
     public function testGet(): void
     {
         $aliases = new Aliases();
