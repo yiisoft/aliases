@@ -60,4 +60,24 @@ class AliasesTest extends TestCase
         $aliases->set('@yii/tii', '/yii/tii');
         $this->assertEquals('/yii/tii', $aliases->get('@yii/tii'));
     }
+
+    public function testConstructConfig(): void
+    {
+        $aliases = new Aliases([
+            '@yii' => '/yii',
+            '@gii' => '@yii/gii',
+        ]);
+
+        $this->assertEquals('/yii', $aliases->get('@yii'));
+        $this->assertEquals('/yii/gii', $aliases->get('@gii'));
+        $this->assertEquals('@yii', $aliases->getRoot('@yii/tii'));
+
+        $aliases->set('@tii', '@gii/tii');
+        $this->assertEquals('/yii/gii/tii', $aliases->get('@tii'));
+
+        $erroneousAlias = '@alias_not_exists';
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage(sprintf('Invalid path alias: %s', $erroneousAlias));
+        $aliases->get($erroneousAlias, true);
+    }
 }

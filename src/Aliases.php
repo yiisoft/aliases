@@ -6,6 +6,19 @@ final class Aliases
     private $aliases = [];
 
     /**
+     * @param array $config
+     * @throws \InvalidArgumentException if $path is an invalid alias.
+     * @see set()
+     * @see get()
+     */
+    public function __construct(array $config = [])
+    {
+        foreach ($config as $alias => $path) {
+            $this->set($alias, $path);
+        }
+    } 
+     
+    /**
      * Magic setter to enable simple aliases configuration.
      * @param string $name
      * @param string $value
