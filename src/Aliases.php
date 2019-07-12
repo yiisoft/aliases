@@ -18,7 +18,7 @@ final class Aliases
         }
     } 
      
-    /* 
+    /**
      * Magic setter to enable simple aliases configuration.
      * @param string $name
      * @param string $value
