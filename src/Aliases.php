@@ -6,6 +6,16 @@ final class Aliases
     private $aliases = [];
 
     /**
+     * Magic setter to enable simple aliases configuration.
+     * @param string $name
+     * @param string $value
+     */
+    public function __set($name, $value)
+    {
+        $this->set($name, $value);
+    }
+
+    /**
      * Registers a path alias.
      *
      * A path alias is a short name representing a long path (a file path, a URL, etc.)
