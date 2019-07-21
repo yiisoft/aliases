@@ -60,13 +60,13 @@ final class Aliases
      */
     public function set(string $alias, ?string $path): void
     {
-        if (strncmp($alias, '@', 1)) {
+        if (!$this->isAlias($alias)) {
             $alias = '@' . $alias;
         }
         $pos = strpos($alias, '/');
         $root = $pos === false ? $alias : substr($alias, 0, $pos);
         if ($path !== null) {
-            $path = strncmp($path, '@', 1) ? rtrim($path, '\\/') : $this->get($path);
+            $path = !$this->isAlias($path) ? rtrim($path, '\\/') : $this->get($path);
             if (!isset($this->aliases[$root])) {
                 if ($pos === false) {
                     $this->aliases[$root] = $path;
@@ -129,8 +129,7 @@ final class Aliases
      */
     public function get($alias, $throwException = true)
     {
-        if (strncmp($alias, '@', 1)) {
-            // not an alias
+        if (!$this->isAlias($alias)) {
             return $alias;
         }
 
@@ -195,5 +194,10 @@ final class Aliases
     public function getAll(): array
     {
         return $this->aliases;
+    }
+
+    private function isAlias(string $alias): bool
+    {
+        return !strncmp($alias, '@', 1);
     }
 }
