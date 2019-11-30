@@ -16,7 +16,7 @@ final class Aliases
         foreach ($config as $alias => $path) {
             $this->set($alias, $path);
         }
-    } 
+    }
      
     /**
      * Magic setter to enable simple aliases configuration.
