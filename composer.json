@@ -15,10 +15,10 @@
         "source": "https://github.com/yiisoft/aliases"
     },
     "require": {
-        "php": "^7.2"
+        "php": "^7.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.2"
+        "phpunit/phpunit": "^8.4"
     },
     "autoload": {
         "psr-4": {
