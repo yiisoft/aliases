@@ -1,4 +1,5 @@
 <?php
+
 namespace Yiisoft\Aliases;
 
 final class Aliases
@@ -17,7 +18,7 @@ final class Aliases
             $this->set($alias, $path);
         }
     }
-     
+
     /**
      * Magic setter to enable simple aliases configuration.
      * @param string $name
@@ -159,7 +160,7 @@ final class Aliases
         if (\is_array($result)) {
             $result = $result['root'];
         }
-        
+
         return $result;
     }
 
