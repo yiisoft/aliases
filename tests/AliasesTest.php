@@ -5,13 +5,11 @@ namespace Yiisoft\Aliases\Tests;
 use PHPUnit\Framework\TestCase;
 use Yiisoft\Aliases\Aliases;
 
-class AliasesTest extends TestCase
+final class AliasesTest extends TestCase
 {
     public function testGet(): void
     {
         $aliases = new Aliases();
-
-        $this->assertFalse($aliases->get('@nonexisting', false));
 
         $aliasNotBeginsWithAt = 'alias not begins with @';
         $this->assertEquals($aliasNotBeginsWithAt, $aliases->get($aliasNotBeginsWithAt));
@@ -29,7 +27,6 @@ class AliasesTest extends TestCase
         $this->assertEquals('/yii/framework/test', $aliases->get('@tii'));
 
         $aliases->set('@yii', null);
-        $this->assertFalse($aliases->get('@yii', false));
         $this->assertEquals('/yii/gii/file', $aliases->get('@yii/gii/file'));
 
         $aliases->set('@some/alias', '/www');
@@ -38,7 +35,7 @@ class AliasesTest extends TestCase
         $erroneousAlias = '@alias_not_exists';
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(sprintf('Invalid path alias: %s', $erroneousAlias));
-        $aliases->get($erroneousAlias, true);
+        $aliases->get($erroneousAlias);
     }
 
     public function testGetRoot(): void
@@ -79,6 +76,6 @@ class AliasesTest extends TestCase
         $erroneousAlias = '@alias_not_exists';
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(sprintf('Invalid path alias: %s', $erroneousAlias));
-        $aliases->get($erroneousAlias, true);
+        $aliases->get($erroneousAlias);
     }
 }

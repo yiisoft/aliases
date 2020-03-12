@@ -4,7 +4,7 @@ namespace Yiisoft\Aliases;
 
 final class Aliases
 {
-    private $aliases = [];
+    private array $aliases = [];
 
     /**
      * @param array $config
@@ -24,7 +24,7 @@ final class Aliases
      * @param string $name
      * @param string $value
      */
-    public function __set($name, $value)
+    public function __set(string $name, string $value): void
     {
         $this->set($name, $value);
     }
@@ -122,13 +122,11 @@ final class Aliases
      * See the [guide article on aliases](guide:concept-aliases) for more information.
      *
      * @param string $alias the alias to be translated.
-     * @param bool $throwException whether to throw an exception if the given alias is invalid.
-     * If this is false and an invalid alias is given, false will be returned by this method.
-     * @return string|bool the path corresponding to the alias, false if the root alias is not previously registered.
-     * @throws \InvalidArgumentException if the alias is invalid while $throwException is true.
+     * @return string the path corresponding to the alias.
+     * @throws \InvalidArgumentException if the root alias is not previously registered.
      * @see setAlias()
      */
-    public function get($alias, $throwException = true)
+    public function get(string $alias): string
     {
         if (!$this->isAlias($alias)) {
             return $alias;
@@ -140,11 +138,7 @@ final class Aliases
             return $result['path'];
         }
 
-        if ($throwException) {
-            throw new \InvalidArgumentException("Invalid path alias: $alias");
-        }
-
-        return false;
+        throw new \InvalidArgumentException("Invalid path alias: $alias");
     }
 
     /**
@@ -154,7 +148,7 @@ final class Aliases
      * @param string $alias the alias
      * @return string the root alias, or null if no root alias is found
      */
-    public function getRoot($alias): ?string
+    public function getRoot(string $alias): ?string
     {
         $result = $this->findAlias($alias);
         if (\is_array($result)) {
