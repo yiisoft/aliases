@@ -33,7 +33,8 @@ final class Aliases
      * Registers a path alias.
      *
      * A path alias is a short name representing a long path (a file path, a URL, etc.)
-     * For example, we use '@yii' as the alias of the path to the Yii framework directory.
+     *
+     * For example, `@vendor` may store path to `vendor` directory.
      *
      * A path alias must start with the character '@' so that it can be easily differentiated
      * from non-alias paths.
@@ -43,9 +44,7 @@ final class Aliases
      *
      * Any trailing '/' and '\' characters in the given path will be trimmed.
      *
-     * See the [guide article on aliases](guide:concept-aliases) for more information.
-     *
-     * @param string $alias the alias name (e.g. "@yii"). It must start with a '@' character.
+     * @param string $alias the alias name (e.g. "@vendor"). It must start with a '@' character.
      * It may contain the forward slash '/' which serves as boundary character when performing
      * alias translation by {@see get()}.
      * @param string $path the path corresponding to the alias. If this is null, the alias will
@@ -53,7 +52,7 @@ final class Aliases
      *
      * - a directory or a file path (e.g. `/tmp`, `/tmp/main.txt`)
      * - a URL (e.g. `http://www.yiiframework.com`)
-     * - a path alias (e.g. `@yii/base`). It will be resolved on {@see get()} call.
+     * - a path alias (e.g. `@vendor/yiisoft`). It will be resolved on {@see get()} call.
      *
      * @see get()
      */
@@ -103,10 +102,10 @@ final class Aliases
      * 2. Otherwise, look for the longest registered alias that matches the beginning part
      *    of the given alias. If it exists, replace the matching part of the given alias with
      *    the corresponding registered path.
-     * 3. Throw an exception if path alias can not be resolved.
+     * 3. Throw an exception if path alias cannot be resolved.
      *
-     * For example, by default '@yii' is registered as the alias to the Yii framework directory,
-     * say '/path/to/yii'. The alias '@yii/web' would then be translated into '/path/to/yii/web'.
+     * For example, if '@vendor' is registered as the alias to the vendor directory,
+     * say '/path/to/vendor'. The alias '@vendor/yiisoft' would then be translated into '/path/to/vendor/yiisoft'.
      *
      * If you have registered two aliases '@foo' and '@foo/bar'. Then translating '@foo/bar/config'
      * would replace the part '@foo/bar' (instead of '@foo') with the corresponding registered path.
@@ -116,8 +115,6 @@ final class Aliases
      * instead of '@foo/bar', because '/' serves as the boundary character.
      *
      * Note, this method does not check if the returned path exists or not.
-     *
-     * See the [guide article on aliases](guide:concept-aliases) for more information.
      *
      * @param string $alias the alias to be translated.
      * @return string the path corresponding to the alias.
