@@ -43,9 +43,10 @@ final class AliasesTest extends TestCase
         $aliases = new Aliases();
 
         $aliases->set('@yii', '/yii/framework');
+        $aliases->set('@yii/gii', '/yii/gii');
+
         $this->assertEquals('@yii', $aliases->getRoot('@yii'));
         $this->assertEquals('@yii', $aliases->getRoot('@yii/test/file'));
-        $aliases->set('@yii/gii', '/yii/gii');
         $this->assertEquals('@yii/gii', $aliases->getRoot('@yii/gii'));
     }
 
@@ -54,8 +55,9 @@ final class AliasesTest extends TestCase
         $aliases = new Aliases();
 
         $aliases->set('@yii/gii', '/yii/gii');
-        $this->assertEquals('/yii/gii', $aliases->get('@yii/gii'));
         $aliases->set('@yii/tii', '/yii/tii');
+
+        $this->assertEquals('/yii/gii', $aliases->get('@yii/gii'));
         $this->assertEquals('/yii/tii', $aliases->get('@yii/tii'));
     }
 
@@ -87,5 +89,29 @@ final class AliasesTest extends TestCase
         ]);
 
         $this->assertEquals('/yii/gii', $aliases->get('@gii'));
+    }
+
+    public function testMagicSetter(): void
+    {
+        $aliases = new Aliases();
+        $aliases->yii = '/yii';
+
+        $this->assertEquals('/yii', $aliases->get('@yii'));
+    }
+
+    public function testGetAll(): void
+    {
+        $aliases = new Aliases([
+            '@zii' => '@gii/zii',
+            '@gii' => '@yii/gii',
+            '@yii' => '/yii',
+        ]);
+
+        $expected = [
+            '@zii' => '/yii/gii/zii',
+            '@gii' => '/yii/gii',
+            '@yii' => '/yii',
+        ];
+        $this->assertEquals($expected, $aliases->getAll());
     }
 }
