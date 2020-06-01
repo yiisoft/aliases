@@ -112,14 +112,16 @@ final class AliasesTest extends TestCase
 
     public function testGetRoot(): void
     {
-        $aliases = new Aliases();
-
-        $aliases->set('@yii', '/yii/framework');
-        $aliases->set('@yii/gii', '/yii/gii');
+        $aliases = new Aliases([
+            '@yii' => '/yii/framework',
+            '@yii/gii' => '/yii/gii',
+            '@simple' => 'simple',
+        ]);
 
         $this->assertEquals('@yii', $aliases->getRoot('@yii'));
         $this->assertEquals('@yii', $aliases->getRoot('@yii/test/file'));
         $this->assertEquals('@yii/gii', $aliases->getRoot('@yii/gii'));
+        $this->assertEquals('@simple', $aliases->getRoot('@simple/test'));
     }
 
     public function testConstructConfig(): void
