@@ -1,7 +1,7 @@
 {
     "name": "yiisoft/aliases",
     "type": "library",
-    "description": "Aliases",
+    "description": "Named paths and URLs storage",
     "keywords": [
         "alias"
     ],
