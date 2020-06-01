@@ -78,4 +78,14 @@ final class AliasesTest extends TestCase
         $this->expectExceptionMessage(sprintf('Invalid path alias: %s', $erroneousAlias));
         $aliases->get($erroneousAlias);
     }
+
+    public function testOrderShouldNotMatter(): void
+    {
+        $aliases = new Aliases([
+            '@gii' => '@yii/gii',
+            '@yii' => '/yii',
+        ]);
+
+        $this->assertEquals('/yii/gii', $aliases->get('@gii'));
+    }
 }
