@@ -67,8 +67,7 @@ final class Aliases
         $pos = strpos($alias, '/');
         $root = $pos === false ? $alias : substr($alias, 0, $pos);
         if ($path !== null) {
-            $path = !$this->isAlias($path) ? rtrim($path, '\\/') : $this->get($path);
-            if (!isset($this->aliases[$root])) {
+            if (!array_key_exists($root, $this->aliases)) {
                 if ($pos === false) {
                     $this->aliases[$root] = $path;
                 } else {
@@ -87,7 +86,7 @@ final class Aliases
                 $this->aliases[$root][$alias] = $path;
                 krsort($this->aliases[$root]);
             }
-        } elseif (isset($this->aliases[$root])) {
+        } elseif (!array_key_exists($root, $this->aliases)) {
             if (\is_array($this->aliases[$root])) {
                 unset($this->aliases[$root][$alias]);
             } elseif ($pos === false) {
@@ -135,7 +134,12 @@ final class Aliases
         $result = $this->findAlias($alias);
 
         if (\is_array($result)) {
-            return $result['path'];
+            $parts = $this->findAlias($result['path']);
+            if ($parts === null) {
+                return $result['path'];
+            }
+
+            return $this->get($parts['path']);
         }
 
         throw new \InvalidArgumentException("Invalid path alias: $alias");
@@ -163,7 +167,7 @@ final class Aliases
         $pos = strpos($alias, '/');
         $root = $pos === false ? $alias : substr($alias, 0, $pos);
 
-        if (isset($this->aliases[$root])) {
+        if (array_key_exists($root, $this->aliases)) {
             if (\is_string($this->aliases[$root])) {
                 return [
                     'root' => $root,
@@ -186,9 +190,17 @@ final class Aliases
         return null;
     }
 
+    /**
+     * Returns all path aliases translated into an actual paths.
+     * @return array Actual paths indexed by alias name.
+     */
     public function getAll(): array
     {
-        return $this->aliases;
+        $result = [];
+        foreach ($this->aliases as $name => $path) {
+            $result[$name] = $this->get($path);
+        }
+        return $result;
     }
 
     private function isAlias(string $alias): bool
