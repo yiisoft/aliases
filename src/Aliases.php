@@ -47,16 +47,14 @@ final class Aliases
      *
      * @param string $alias the alias name (e.g. "@yii"). It must start with a '@' character.
      * It may contain the forward slash '/' which serves as boundary character when performing
-     * alias translation by [[get()]].
+     * alias translation by {@see get()}.
      * @param string $path the path corresponding to the alias. If this is null, the alias will
      * be removed. Trailing '/' and '\' characters will be trimmed. This can be
      *
      * - a directory or a file path (e.g. `/tmp`, `/tmp/main.txt`)
      * - a URL (e.g. `http://www.yiiframework.com`)
-     * - a path alias (e.g. `@yii/base`). In this case, the path alias will be converted into the
-     *   actual path first by calling [[get()]].
+     * - a path alias (e.g. `@yii/base`). It will be resolved on {@see get()} call.
      *
-     * @throws \InvalidArgumentException if $path is an invalid alias.
      * @see get()
      */
     public function set(string $alias, ?string $path): void
@@ -67,6 +65,7 @@ final class Aliases
         $pos = strpos($alias, '/');
         $root = $pos === false ? $alias : substr($alias, 0, $pos);
         if ($path !== null) {
+            $path = rtrim($path, '\\/');
             if (!array_key_exists($root, $this->aliases)) {
                 if ($pos === false) {
                     $this->aliases[$root] = $path;
@@ -86,7 +85,7 @@ final class Aliases
                 $this->aliases[$root][$alias] = $path;
                 krsort($this->aliases[$root]);
             }
-        } elseif (!array_key_exists($root, $this->aliases)) {
+        } elseif (array_key_exists($root, $this->aliases)) {
             if (\is_array($this->aliases[$root])) {
                 unset($this->aliases[$root][$alias]);
             } elseif ($pos === false) {
@@ -104,7 +103,7 @@ final class Aliases
      * 2. Otherwise, look for the longest registered alias that matches the beginning part
      *    of the given alias. If it exists, replace the matching part of the given alias with
      *    the corresponding registered path.
-     * 3. Throw an exception or return false, depending on the `$throwException` parameter.
+     * 3. Throw an exception if path alias can not be resolved.
      *
      * For example, by default '@yii' is registered as the alias to the Yii framework directory,
      * say '/path/to/yii'. The alias '@yii/web' would then be translated into '/path/to/yii/web'.
@@ -147,7 +146,7 @@ final class Aliases
 
     /**
      * Returns the root alias part of a given alias.
-     * A root alias is an alias that has been registered via [[setAlias()]] previously.
+     * A root alias is an alias that has been registered via {@see set()} previously.
      * If a given alias matches multiple root aliases, the longest one will be returned.
      * @param string $alias the alias
      * @return string the root alias, or null if no root alias is found
