@@ -91,7 +91,8 @@ final class AliasesTest extends TestCase
             '@yii' => '/yii/framework',
         ]);
 
-        $aliases->remove('@yii');
+        $aliases->remove('yii');
+
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid path alias: @yii');
         $aliases->get('@yii');
