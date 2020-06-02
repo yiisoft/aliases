@@ -63,7 +63,7 @@ That would output `/special/location` since `@vendor/test` is more specific matc
 
 ### Alias removal
 
-If you need to remove alias runtime, set it to `null`:
+If you need to remove alias runtime:
 
 ```php
 use Yiisoft\Aliases\Aliases;
@@ -71,5 +71,5 @@ use Yiisoft\Aliases\Aliases;
 $aliases = new Aliases([
     '@root' => __DIR__,
 ]);
-$aliases->set('@root', null);
+$aliases->remove('@root');
 ```
