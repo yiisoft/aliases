@@ -85,26 +85,26 @@ final class AliasesTest extends TestCase
         $this->assertEquals('/yii', $aliases->get('@yii'));
     }
 
-    public function testSetToNullRemovesAlias(): void
+    public function testRemovesAlias(): void
     {
         $aliases = new Aliases([
             '@yii' => '/yii/framework',
         ]);
 
-        $aliases->set('@yii', null);
+        $aliases->remove('@yii');
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid path alias: @yii');
         $aliases->get('@yii');
     }
 
-    public function testSetToNullRemovesSubAlias(): void
+    public function testRemovesSubAlias(): void
     {
         $aliases = new Aliases([
             '@yii' => '/yii/framework',
             '@yii/gii' => '/yii/gii',
         ]);
 
-        $aliases->set('@yii/gii', null);
+        $aliases->remove('@yii/gii');
 
         $this->assertEquals('/yii/framework', $aliases->get('@yii'));
         $this->assertEquals('/yii/framework/gii', $aliases->get('@yii/gii'));

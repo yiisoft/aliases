@@ -47,8 +47,8 @@ final class Aliases
      * @param string $alias the alias name (e.g. "@vendor"). It must start with a '@' character.
      * It may contain the forward slash '/' which serves as boundary character when performing
      * alias translation by {@see get()}.
-     * @param string $path the path corresponding to the alias. If this is null, the alias will
-     * be removed. Trailing '/' and '\' characters will be trimmed. This can be
+     * @param string $path the path corresponding to the alias.
+     * Trailing '/' and '\' characters will be trimmed. This can be
      *
      * - a directory or a file path (e.g. `/tmp`, `/tmp/main.txt`)
      * - a URL (e.g. `http://www.yiiframework.com`)
@@ -56,35 +56,49 @@ final class Aliases
      *
      * @see get()
      */
-    public function set(string $alias, ?string $path): void
+    public function set(string $alias, string $path): void
     {
         if (!$this->isAlias($alias)) {
             $alias = '@' . $alias;
         }
         $pos = strpos($alias, '/');
         $root = $pos === false ? $alias : substr($alias, 0, $pos);
-        if ($path !== null) {
-            $path = rtrim($path, '\\/');
-            if (!array_key_exists($root, $this->aliases)) {
-                if ($pos === false) {
-                    $this->aliases[$root] = $path;
-                } else {
-                    $this->aliases[$root] = [$alias => $path];
-                }
-            } elseif (\is_string($this->aliases[$root])) {
-                if ($pos === false) {
-                    $this->aliases[$root] = $path;
-                } else {
-                    $this->aliases[$root] = [
-                        $alias => $path,
-                        $root => $this->aliases[$root],
-                    ];
-                }
+
+        $path = rtrim($path, '\\/');
+        if (!array_key_exists($root, $this->aliases)) {
+            if ($pos === false) {
+                $this->aliases[$root] = $path;
             } else {
-                $this->aliases[$root][$alias] = $path;
-                krsort($this->aliases[$root]);
+                $this->aliases[$root] = [$alias => $path];
             }
-        } elseif (array_key_exists($root, $this->aliases)) {
+        } elseif (\is_string($this->aliases[$root])) {
+            if ($pos === false) {
+                $this->aliases[$root] = $path;
+            } else {
+                $this->aliases[$root] = [
+                    $alias => $path,
+                    $root => $this->aliases[$root],
+                ];
+            }
+        } else {
+            $this->aliases[$root][$alias] = $path;
+            krsort($this->aliases[$root]);
+        }
+    }
+
+    /**
+     * Remove alias.
+     * @param string $alias Alias to be removed.
+     */
+    public function remove(string $alias): void
+    {
+        if (!$this->isAlias($alias)) {
+            $alias = '@' . $alias;
+        }
+        $pos = strpos($alias, '/');
+        $root = $pos === false ? $alias : substr($alias, 0, $pos);
+
+        if (array_key_exists($root, $this->aliases)) {
             if (\is_array($this->aliases[$root])) {
                 unset($this->aliases[$root][$alias]);
             } elseif ($pos === false) {
