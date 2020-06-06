@@ -15,6 +15,7 @@ while `@bin` may store `@vendor/bin`.
 [![Build Status](https://github.com/yiisoft/aliases/workflows/build/badge.svg)](https://github.com/yiisoft/aliases/actions)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yiisoft/aliases/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yiisoft/aliases/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/yiisoft/aliases/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/yiisoft/aliases/?branch=master)
+[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https://badge-api.stryker-mutator.io/github.com/yiisoft/aliases/master)](https://dashboard.stryker-mutator.io/reports/github.com/yiisoft/aliases/master)
 
 ## General usage
 
