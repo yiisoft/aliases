@@ -143,58 +143,33 @@ final class Aliases
             return $alias;
         }
 
-        $result = $this->findAlias($alias);
+        $foundAlias = $this->findAlias($alias);
 
-        if (\is_array($result)) {
-            $parts = $this->findAlias($result['path']);
-            if ($parts === null) {
-                return $result['path'];
-            }
-
-            return $this->get($parts['path']);
+        if ($foundAlias === null) {
+            throw new \InvalidArgumentException("Invalid path alias: $alias");
         }
 
-        throw new \InvalidArgumentException("Invalid path alias: $alias");
-    }
-
-    /**
-     * Returns the root alias part of a given alias.
-     * A root alias is an alias that has been registered via {@see set()} previously.
-     * If a given alias matches multiple root aliases, the longest one will be returned.
-     * @param string $alias the alias
-     * @return string the root alias, or null if no root alias is found
-     */
-    public function getRoot(string $alias): ?string
-    {
-        $result = $this->findAlias($alias);
-        if (\is_array($result)) {
-            $result = $result['root'];
+        $foundSubAlias = $this->findAlias($foundAlias);
+        if ($foundSubAlias === null) {
+            return $foundAlias;
         }
 
-        return $result;
+        return $this->get($foundSubAlias);
     }
 
-    private function findAlias(string $alias): ?array
+    private function findAlias(string $alias): ?string
     {
         $pos = strpos($alias, '/');
         $root = $pos === false ? $alias : substr($alias, 0, $pos);
 
         if (array_key_exists($root, $this->aliases)) {
             if (\is_string($this->aliases[$root])) {
-                return [
-                    'root' => $root,
-                    'path' => $pos === false
-                        ? $this->aliases[$root]
-                        : $this->aliases[$root] . substr($alias, $pos)
-                ];
+                return $pos === false ? $this->aliases[$root] : $this->aliases[$root] . substr($alias, $pos);
             }
 
             foreach ($this->aliases[$root] as $name => $path) {
                 if (strpos($alias . '/', $name . '/') === 0) {
-                    return [
-                        'root' => $name,
-                        'path' => $path . substr($alias, strlen($name))
-                    ];
+                    return $path . substr($alias, strlen($name));
                 }
             }
         }
