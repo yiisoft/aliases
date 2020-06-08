@@ -12,10 +12,11 @@ while `@bin` may store `@vendor/bin`.
 
 [![Latest Stable Version](https://poser.pugx.org/yiisoft/aliases/v/stable.png)](https://packagist.org/packages/yiisoft/aliases)
 [![Total Downloads](https://poser.pugx.org/yiisoft/aliases/downloads.png)](https://packagist.org/packages/yiisoft/aliases)
-[![Build Status](https://github.com/yiisoft/aliases/workflows/build/badge.svg)](https://github.com/yiisoft/aliases/actions)
+[![Build Status](https://github.com/yiisoft/aliases/workflows/build/badge.svg)](https://github.com/yiisoft/aliases/actions?query=workflow%3Abuild)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yiisoft/aliases/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yiisoft/aliases/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/yiisoft/aliases/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/yiisoft/aliases/?branch=master)
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https://badge-api.stryker-mutator.io/github.com/yiisoft/aliases/master)](https://dashboard.stryker-mutator.io/reports/github.com/yiisoft/aliases/master)
+[![static analysis with phan](https://github.com/yiisoft/aliases/workflows/static%20analysis%20with%20phan/badge.svg)](https://github.com/yiisoft/aliases/actions?query=workflow%3A%22static+analysis+with+phan%22)
 
 ## General usage
 
