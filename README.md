@@ -16,7 +16,7 @@ while `@bin` may store `@vendor/bin`.
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yiisoft/aliases/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yiisoft/aliases/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/yiisoft/aliases/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/yiisoft/aliases/?branch=master)
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https://badge-api.stryker-mutator.io/github.com/yiisoft/aliases/master)](https://dashboard.stryker-mutator.io/reports/github.com/yiisoft/aliases/master)
-[![static analysis with phan](https://github.com/yiisoft/aliases/workflows/static%20analysis%20with%20phan/badge.svg)](https://github.com/yiisoft/aliases/actions?query=workflow%3A%22static+analysis+with+phan%22)
+[![static analysis](https://github.com/yiisoft/aliases/workflows/static%20analysis/badge.svg)](https://github.com/yiisoft/aliases/actions?query=workflow%3A%22static+analysis%22)
 
 ## General usage
 
@@ -74,4 +74,28 @@ $aliases = new Aliases([
     '@root' => __DIR__,
 ]);
 $aliases->remove('@root');
+```
+
+### Unit testing
+
+The package is tested with [PHPUnit](https://phpunit.de/). To run tests:
+
+```php
+./vendor/bin/phpunit
+```
+
+### Mutation testing
+
+The package tests are checked with [Infection](https://infection.github.io/) mutation framework. To run it:
+
+```php
+./vendor/bin/infection
+```
+
+### Static analysis
+
+The code is statically analyzed with [Phan](https://github.com/phan/phan/wiki). To run static analysis:
+
+```php
+./vendor/bin/phan
 ```
