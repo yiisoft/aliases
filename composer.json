@@ -34,5 +34,10 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "extra": {
+        "config-plugin": {
+            "common": "config/common.php"
+        }
     }
 }
