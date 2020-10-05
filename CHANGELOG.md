@@ -1,5 +1,9 @@
 # Aliases Change Log
 
+## 1.0.3 October 6, 2020
+
+- Don't error on config assembly in case aliases aren't set (samdark)
+
 ## 1.0.2 October 5, 2020
 
 - Add config for composer-config-plugin (xepozz)
