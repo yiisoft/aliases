@@ -1,5 +1,10 @@
 # Aliases Change Log
 
+
+## 1.1.1 under development
+
+- no changes in this release.
+
 ## 1.1.0 November 4, 2020
 
 - Chg #26: Change Yii configuration `$params['aliases']` to `$params['yiisoft/aliases']['aliases']` (vjik)
