@@ -3,7 +3,7 @@
 
 ## 1.1.1 under development
 
-- no changes in this release.
+- Fix #28: Add `params` to `config-plugin` section in `composer.json` (vjik)  
 
 ## 1.1.0 November 4, 2020
 
