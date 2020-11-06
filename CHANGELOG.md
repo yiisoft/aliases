@@ -1,9 +1,12 @@
 # Aliases Change Log
 
 
-## 1.1.1 under development
+## 1.1.1 November 06, 2020
 
-- Fix #28: Add `params` to `config-plugin` section in `composer.json` (vjik)  
+
+- Fix #28: Add `params` to `config-plugin` section in `composer.json` (vjik)
+
+
 
 ## 1.1.0 November 4, 2020
 
