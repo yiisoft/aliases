@@ -1,6 +1,11 @@
 # Aliases Change Log
 
 
+## 1.1.2 under development
+
+- no changes in this release.
+
+
 ## 1.1.1 November 06, 2020
 
 
