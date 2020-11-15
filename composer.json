@@ -40,5 +40,10 @@
             "params": "config/params.php",
             "common": "config/common.php"
         }
+    },
+    "scripts": {
+        "test": [
+            "phpunit --colors --no-interaction"
+        ]
     }
 }
