@@ -47,7 +47,7 @@ final class AliasesTest extends TestCase
         $aliases = new Aliases([
             '@yii' => '/yii/framework',
             '@yii/gii' => '/yii/gii',
-            '@yii/gii/assets' => '/yii/gii_assets'
+            '@yii/gii/assets' => '/yii/gii_assets',
         ]);
 
         $this->assertEquals('/yii/framework', $aliases->get('@yii'));
