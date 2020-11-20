@@ -10,7 +10,9 @@ final class Aliases
 
     /**
      * @param array $config
+     *
      * @throws \InvalidArgumentException if $path is an invalid alias.
+     *
      * @see set()
      * @see get()
      */
@@ -23,6 +25,7 @@ final class Aliases
 
     /**
      * Magic setter to enable simple aliases configuration.
+     *
      * @param string $name
      * @param string $value
      */
@@ -90,6 +93,7 @@ final class Aliases
 
     /**
      * Remove alias.
+     *
      * @param string $alias Alias to be removed.
      */
     public function remove(string $alias): void
@@ -133,8 +137,11 @@ final class Aliases
      * Note, this method does not check if the returned path exists or not.
      *
      * @param string $alias the alias to be translated.
-     * @return string the path corresponding to the alias.
+     *
      * @throws \InvalidArgumentException if the root alias is not previously registered.
+     *
+     * @return string the path corresponding to the alias.
+     *
      * @see setAlias()
      */
     public function get(string $alias): string
@@ -179,6 +186,7 @@ final class Aliases
 
     /**
      * Returns all path aliases translated into an actual paths.
+     *
      * @return array Actual paths indexed by alias name.
      */
     public function getAll(): array
