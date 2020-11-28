@@ -3,7 +3,7 @@
 
 ## 1.1.2 under development
 
-- Fix #35: Don't throw TypeError from method `getAll()`, when alias is nested  (Fantom409)
+- Fix #35: Don't throw TypeError from method `getAll()`, when alias is nested (Fantom409)
 
 
 ## 1.1.1 November 06, 2020
