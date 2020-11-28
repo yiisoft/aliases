@@ -3,13 +3,13 @@
 
 ## 1.1.2 under development
 
-- Fix #35: Don't throw TypeError from method `getAll()`, when alias is nested (Fantom409)
+- Bug #35: Don't throw TypeError from method `getAll()`, when alias is nested (Fantom409)
 
 
 ## 1.1.1 November 06, 2020
 
 
-- Fix #28: Add `params` to `config-plugin` section in `composer.json` (vjik)
+- Bug #28: Add `params` to `config-plugin` section in `composer.json` (vjik)
 
 
 
