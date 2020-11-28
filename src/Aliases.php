@@ -200,7 +200,7 @@ final class Aliases
         $result = [];
         foreach ($this->aliases as $name => $path) {
             if (is_array($path)) {
-                foreach($path as $innerName => $innerPath) {
+                foreach ($path as $innerName => $innerPath) {
                     $result[$innerName] = $innerPath;
                 }
             } else {
