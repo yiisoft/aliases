@@ -6,10 +6,15 @@ namespace Yiisoft\Aliases;
 
 final class Aliases
 {
+    /**
+     * @var array
+     * @psalm-var array<string, string|array<string, string>>
+     */
     private array $aliases = [];
 
     /**
      * @param array $config
+     * @psalm-param array<string, string> $config
      *
      * @throws \InvalidArgumentException if $path is an invalid alias.
      *
@@ -67,6 +72,7 @@ final class Aliases
             $alias = '@' . $alias;
         }
         $pos = strpos($alias, '/');
+        /** @psalm-var string $root */
         $root = $pos === false ? $alias : substr($alias, 0, $pos);
 
         $path = rtrim($path, '\\/');
@@ -193,8 +199,15 @@ final class Aliases
     {
         $result = [];
         foreach ($this->aliases as $name => $path) {
-            $result[$name] = $this->get($path);
+            if (is_array($path)) {
+                foreach($path as $innerName => $innerPath) {
+                    $result[$innerName] = $innerPath;
+                }
+            } else {
+                $result[$name] = $this->get($path);
+            }
         }
+
         return $result;
     }
 

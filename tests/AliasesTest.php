@@ -156,5 +156,15 @@ final class AliasesTest extends TestCase
             '@yii' => '/yii',
         ];
         $this->assertEquals($expected, $aliases->getAll());
+
+        $expected = [
+            '@yii' => '/yii/framework',
+            '@yii/gii' => '/yii/gii',
+            '@yii/gii/assets' => '/yii/gii_assets',
+        ];
+
+        $aliases = new Aliases($expected);
+
+        $this->assertEquals($expected, $aliases->getAll());
     }
 }
