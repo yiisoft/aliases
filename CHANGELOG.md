@@ -1,9 +1,11 @@
 # Aliases Change Log
 
 
-## 1.1.2 under development
+## 1.1.2 December 24, 2020
+
 
 - Bug #35: Don't throw TypeError from method `getAll()`, when alias is nested (Fantom409)
+
 
 
 ## 1.1.1 November 06, 2020
