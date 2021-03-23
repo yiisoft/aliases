@@ -37,9 +37,12 @@
         "sort-packages": true
     },
     "extra": {
+        "config-plugin-options": {
+            "source-directory": "config"
+        },
         "config-plugin": {
-            "params": "config/params.php",
-            "common": "config/common.php"
+            "params": "params.php",
+            "common": "common.php"
         }
     },
     "scripts": {
