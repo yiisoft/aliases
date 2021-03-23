@@ -1,7 +1,7 @@
 # Aliases Change Log
 
 
-## 1.1.3 under development
+## 1.1.3 March 23, 2021
 
 - Chg: Adjust config for new config plugin (samdark)
 
