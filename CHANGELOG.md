@@ -3,22 +3,15 @@
 
 ## 1.1.3 under development
 
-- no changes in this release.
-
+- Chg: Adjust config for new config plugin (samdark)
 
 ## 1.1.2 December 24, 2020
 
-
 - Bug #35: Don't throw TypeError from method `getAll()`, when alias is nested (Fantom409)
-
-
 
 ## 1.1.1 November 06, 2020
 
-
 - Bug #28: Add `params` to `config-plugin` section in `composer.json` (vjik)
-
-
 
 ## 1.1.0 November 4, 2020
 
