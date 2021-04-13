@@ -3,8 +3,7 @@
 
 ## 1.1.5 under development
 
-- no changes in this release.
-
+- Chg #40: Remove magic `__set()` that was leading to weird side-effects (samdark)
 
 ## 1.1.4 April 13, 2021
 

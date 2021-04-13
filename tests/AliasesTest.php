@@ -134,14 +134,6 @@ final class AliasesTest extends TestCase
         $this->assertEquals('/yii/gii', $aliases->get('@gii'));
     }
 
-    public function testMagicSetter(): void
-    {
-        $aliases = new Aliases();
-        $aliases->yii = '/yii';
-
-        $this->assertEquals('/yii', $aliases->get('@yii'));
-    }
-
     public function testGetAll(): void
     {
         $aliases = new Aliases([
