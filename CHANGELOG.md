@@ -1,6 +1,11 @@
 # Aliases Change Log
 
 
+## 2.0.1 under development
+
+- no changes in this release.
+
+
 ## 2.0.0 April 13, 2021
 
 - Chg #40: Remove magic `__set()` that was leading to weird side-effects (samdark)
