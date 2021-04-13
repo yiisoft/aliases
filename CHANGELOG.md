@@ -1,6 +1,11 @@
 # Aliases Change Log
 
 
+## 1.1.5 under development
+
+- no changes in this release.
+
+
 ## 1.1.4 April 13, 2021
 
 - Chg: Adjust config for yiisoft/factory changes (vjik, samdark)
