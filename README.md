@@ -35,7 +35,7 @@ $aliases->set('@bin', '@vendor/bin');
 echo $aliases->get('@bin/phpunit');
 ```
 
-The code about would output "/path/to/vendor/bit/phpunit".
+The code about would output "/path/to/vendor/bin/phpunit".
 
 Note that `set()` method does not check if the given path exists or not. All it does is to associate the alias with
 the path.
