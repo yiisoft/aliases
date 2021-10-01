@@ -173,12 +173,10 @@ final class Aliases
      */
     public function getArray(array $aliases): array
     {
-        $result = [];
-        foreach ($aliases as $key => $alias) {
-            $result[$key] = $this->get($alias);
-        }
-
-        return $result;
+        return array_map(
+            fn(string $alias) => $this->get($alias),
+            $aliases,
+        );
     }
 
     private function findAlias(string $alias): ?string
