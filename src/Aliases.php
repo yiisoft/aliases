@@ -174,7 +174,7 @@ final class Aliases
     public function getArray(array $aliases): array
     {
         return array_map(
-            fn(string $alias) => $this->get($alias),
+            fn (string $alias) => $this->get($alias),
             $aliases,
         );
     }
