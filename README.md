@@ -48,6 +48,17 @@ The path could be:
 
 Any trailing `/` and `\` characters in the given path will be trimmed.
 
+To bulk translate path aliases into actual paths use `getArray()` method:
+
+```php
+$aliases = new Aliases([
+    '@root' => '/my/app',
+]);
+
+// Value will be ['src' => '/my/app/src', 'tests' => '/my/app/tests']
+$directories = $aliases->getAll(['src' => '@root/src', 'tests' => '@root/tests']);
+```
+
 ### Alias priorities
 
 In case multiple aliases are registered with same root (prefix), then the most specific has precedence:

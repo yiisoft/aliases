@@ -159,4 +159,25 @@ final class AliasesTest extends TestCase
 
         $this->assertEquals($expected, $aliases->getAll());
     }
+
+    public function dataGetArray(): array
+    {
+        return [
+            'empty' => [[], []],
+            'not-empty' => [['/a/hello', '/b/world', '/c/test'], ['@a/hello', '@b/world', '/c/test']],
+        ];
+    }
+
+    /**
+     * @dataProvider dataGetArray
+     */
+    public function testGetArray(array $expected, array $aliases): void
+    {
+        $service = new Aliases([
+            '@a' => '/a',
+            '@b' => '/b',
+        ]);
+
+        $this->assertSame($expected, $service->getArray($aliases));
+    }
 }

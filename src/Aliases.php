@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Yiisoft\Aliases;
 
+use InvalidArgumentException;
+
 final class Aliases
 {
     /**
@@ -14,9 +16,10 @@ final class Aliases
 
     /**
      * @param array $config
+     *
      * @psalm-param array<string, string> $config
      *
-     * @throws \InvalidArgumentException if $path is an invalid alias.
+     * @throws InvalidArgumentException if $path is an invalid alias.
      *
      * @see set()
      * @see get()
@@ -133,7 +136,7 @@ final class Aliases
      *
      * @param string $alias the alias to be translated.
      *
-     * @throws \InvalidArgumentException if the root alias is not previously registered.
+     * @throws InvalidArgumentException if the root alias is not previously registered.
      *
      * @return string the path corresponding to the alias.
      *
@@ -148,7 +151,7 @@ final class Aliases
         $foundAlias = $this->findAlias($alias);
 
         if ($foundAlias === null) {
-            throw new \InvalidArgumentException("Invalid path alias: $alias");
+            throw new InvalidArgumentException("Invalid path alias: $alias");
         }
 
         $foundSubAlias = $this->findAlias($foundAlias);
@@ -157,6 +160,23 @@ final class Aliases
         }
 
         return $this->get($foundSubAlias);
+    }
+
+    /**
+     * Bulk translates path aliases into actual paths.
+     *
+     * @param string[] $aliases Aliases to be translated.
+     *
+     * @throws InvalidArgumentException If the root alias was not previously registered.
+     *
+     * @return string[] The paths corresponding to the aliases.
+     */
+    public function getArray(array $aliases): array
+    {
+        return array_map(
+            fn (string $alias) => $this->get($alias),
+            $aliases,
+        );
     }
 
     private function findAlias(string $alias): ?string
