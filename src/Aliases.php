@@ -163,11 +163,11 @@ final class Aliases
     }
 
     /**
-     * Bulk translates a path aliases into an actual path.
+     * Bulk translates path aliases into actual paths.
      *
-     * @param string[] $aliases The aliases to be translated.
+     * @param string[] $aliases Aliases to be translated.
      *
-     * @throws InvalidArgumentException If the root alias is not previously registered.
+     * @throws InvalidArgumentException If the root alias was not previously registered.
      *
      * @return string[] The paths corresponding to the aliases.
      */

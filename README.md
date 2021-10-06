@@ -48,7 +48,7 @@ The path could be:
 
 Any trailing `/` and `\` characters in the given path will be trimmed.
 
-For bulk translates a path aliases into an actual path use method `getArray()`:
+To bulk translate path aliases into actual paths use `getArray()` method:
 
 ```php
 $aliases = new Aliases([

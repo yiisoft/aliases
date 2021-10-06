@@ -2,7 +2,7 @@
 
 ## 2.0.1 under development
 
-- New #44: Add method `Aliases::getArray()` that bulk translates a path aliases into an actual paths (vjik)
+- New #44: Add method `Aliases::getArray()` that bulk translates path aliases into actual paths (vjik)
 
 ## 2.0.0 April 13, 2021
 
