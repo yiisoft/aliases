@@ -183,26 +183,6 @@ final class Aliases
         );
     }
 
-    private function findAlias(string $alias): ?string
-    {
-        $pos = strpos($alias, '/');
-        $root = $pos === false ? $alias : substr($alias, 0, $pos);
-
-        if (array_key_exists($root, $this->aliases)) {
-            if (is_string($this->aliases[$root])) {
-                return $pos === false ? $this->aliases[$root] : $this->aliases[$root] . substr($alias, $pos);
-            }
-
-            foreach ($this->aliases[$root] as $name => $path) {
-                if (strpos($alias . '/', $name . '/') === 0) {
-                    return $path . substr($alias, strlen($name));
-                }
-            }
-        }
-
-        return null;
-    }
-
     /**
      * Returns all path aliases translated into an actual paths.
      *
@@ -222,6 +202,26 @@ final class Aliases
         }
 
         return $result;
+    }
+
+    private function findAlias(string $alias): ?string
+    {
+        $pos = strpos($alias, '/');
+        $root = $pos === false ? $alias : substr($alias, 0, $pos);
+
+        if (array_key_exists($root, $this->aliases)) {
+            if (is_string($this->aliases[$root])) {
+                return $pos === false ? $this->aliases[$root] : $this->aliases[$root] . substr($alias, $pos);
+            }
+
+            foreach ($this->aliases[$root] as $name => $path) {
+                if (strpos($alias . '/', $name . '/') === 0) {
+                    return $path . substr($alias, strlen($name));
+                }
+            }
+        }
+
+        return null;
     }
 
     private function isAlias(string $alias): bool
