@@ -6,6 +6,10 @@ namespace Yiisoft\Aliases;
 
 use InvalidArgumentException;
 
+use function array_key_exists;
+use function is_array;
+use function is_string;
+
 final class Aliases
 {
     /**
@@ -74,7 +78,7 @@ final class Aliases
             } else {
                 $this->aliases[$root] = [$alias => $path];
             }
-        } elseif (\is_string($this->aliases[$root])) {
+        } elseif (is_string($this->aliases[$root])) {
             if ($pos === false) {
                 $this->aliases[$root] = $path;
             } else {
@@ -103,7 +107,7 @@ final class Aliases
         $root = $pos === false ? $alias : substr($alias, 0, $pos);
 
         if (array_key_exists($root, $this->aliases)) {
-            if (\is_array($this->aliases[$root])) {
+            if (is_array($this->aliases[$root])) {
                 unset($this->aliases[$root][$alias]);
             } elseif ($pos === false) {
                 unset($this->aliases[$root]);
@@ -185,7 +189,7 @@ final class Aliases
         $root = $pos === false ? $alias : substr($alias, 0, $pos);
 
         if (array_key_exists($root, $this->aliases)) {
-            if (\is_string($this->aliases[$root])) {
+            if (is_string($this->aliases[$root])) {
                 return $pos === false ? $this->aliases[$root] : $this->aliases[$root] . substr($alias, $pos);
             }
 
