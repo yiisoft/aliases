@@ -1,6 +1,6 @@
-# Aliases Change Log
+# Yii Aliases Change Log
 
-## 2.0.1 under development
+## 2.1.0 under development
 
 - New #44: Add method `Aliases::getArray()` that bulk translates path aliases into actual paths (vjik)
 
@@ -43,6 +43,3 @@
 ## 1.0.0 June 7, 2020
 
 - Initial release.
-
-
-
