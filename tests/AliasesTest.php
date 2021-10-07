@@ -15,7 +15,7 @@ final class AliasesTest extends TestCase
         $aliases = new Aliases();
 
         $aliasNotBeginsWithAt = 'alias not begins with @';
-        $this->assertEquals($aliasNotBeginsWithAt, $aliases->get($aliasNotBeginsWithAt));
+        $this->assertSame($aliasNotBeginsWithAt, $aliases->get($aliasNotBeginsWithAt));
     }
 
     public function testDirect(): void
@@ -23,7 +23,7 @@ final class AliasesTest extends TestCase
         $aliases = new Aliases();
 
         $aliases->set('@yii', '/yii/framework');
-        $this->assertEquals('/yii/framework', $aliases->get('@yii'));
+        $this->assertSame('/yii/framework', $aliases->get('@yii'));
     }
 
     public function testDerived(): void
@@ -31,7 +31,7 @@ final class AliasesTest extends TestCase
         $aliases = new Aliases();
 
         $aliases->set('@yii', '/yii/framework');
-        $this->assertEquals('/yii/framework/test/file', $aliases->get('@yii/test/file'));
+        $this->assertSame('/yii/framework/test/file', $aliases->get('@yii/test/file'));
     }
 
     public function testComposite(): void
@@ -39,7 +39,7 @@ final class AliasesTest extends TestCase
         $aliases = new Aliases();
 
         $aliases->set('@some/alias', '/www');
-        $this->assertEquals('/www', $aliases->get('@some/alias'));
+        $this->assertSame('/www', $aliases->get('@some/alias'));
     }
 
     public function testSpecificAliasWhenGeneralIsDefined(): void
@@ -50,10 +50,10 @@ final class AliasesTest extends TestCase
             '@yii/gii/assets' => '/yii/gii_assets',
         ]);
 
-        $this->assertEquals('/yii/framework', $aliases->get('@yii'));
-        $this->assertEquals('/yii/gii/test', $aliases->get('@yii/gii/test'));
-        $this->assertEquals('/yii/framework/giitest', $aliases->get('@yii/giitest'));
-        $this->assertEquals('/yii/gii_assets', $aliases->get('@yii/gii/assets'));
+        $this->assertSame('/yii/framework', $aliases->get('@yii'));
+        $this->assertSame('/yii/gii/test', $aliases->get('@yii/gii/test'));
+        $this->assertSame('/yii/framework/giitest', $aliases->get('@yii/giitest'));
+        $this->assertSame('/yii/gii_assets', $aliases->get('@yii/gii/assets'));
     }
 
     public function testNonExisting(): void
@@ -73,8 +73,8 @@ final class AliasesTest extends TestCase
             '@backward' => 'backward\\\\',
         ]);
 
-        $this->assertEquals('forward', $aliases->get('@forward'));
-        $this->assertEquals('backward', $aliases->get('@backward'));
+        $this->assertSame('forward', $aliases->get('@forward'));
+        $this->assertSame('backward', $aliases->get('@backward'));
     }
 
     public function testSetOverridesExistingValue(): void
@@ -84,7 +84,7 @@ final class AliasesTest extends TestCase
         ]);
 
         $aliases->set('@yii', '/yii');
-        $this->assertEquals('/yii', $aliases->get('@yii'));
+        $this->assertSame('/yii', $aliases->get('@yii'));
     }
 
     public function testSetWithoutAt(): void
@@ -119,8 +119,8 @@ final class AliasesTest extends TestCase
 
         $aliases->remove('@yii/gii');
 
-        $this->assertEquals('/yii/framework', $aliases->get('@yii'));
-        $this->assertEquals('/yii/framework/gii', $aliases->get('@yii/gii'));
+        $this->assertSame('/yii/framework', $aliases->get('@yii'));
+        $this->assertSame('/yii/framework/gii', $aliases->get('@yii/gii'));
     }
 
     public function testConstructConfig(): void
@@ -130,8 +130,8 @@ final class AliasesTest extends TestCase
             '@gii' => '@yii/gii',
         ]);
 
-        $this->assertEquals('/yii', $aliases->get('@yii'));
-        $this->assertEquals('/yii/gii', $aliases->get('@gii'));
+        $this->assertSame('/yii', $aliases->get('@yii'));
+        $this->assertSame('/yii/gii', $aliases->get('@gii'));
     }
 
     public function testOrderShouldNotMatter(): void
@@ -141,7 +141,7 @@ final class AliasesTest extends TestCase
             '@yii' => '/yii',
         ]);
 
-        $this->assertEquals('/yii/gii', $aliases->get('@gii'));
+        $this->assertSame('/yii/gii', $aliases->get('@gii'));
     }
 
     public function testGetAll(): void
@@ -161,8 +161,8 @@ final class AliasesTest extends TestCase
 
         $expected = [
             '@yii' => '/yii/framework',
-            '@yii/gii' => '/yii/gii',
             '@yii/gii/assets' => '/yii/gii_assets',
+            '@yii/gii' => '/yii/gii',
         ];
 
         $aliases = new Aliases($expected);
