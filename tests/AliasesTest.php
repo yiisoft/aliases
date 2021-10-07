@@ -87,6 +87,16 @@ final class AliasesTest extends TestCase
         $this->assertEquals('/yii', $aliases->get('@yii'));
     }
 
+    public function testSetWithoutAt(): void
+    {
+        $aliases = new ALiases();
+        $aliases->set('yii', '/yii');
+
+        $path = $aliases->get('@yii/hello');
+
+        $this->assertSame('/yii/hello', $path);
+    }
+
     public function testRemovesAlias(): void
     {
         $aliases = new Aliases([
