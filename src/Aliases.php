@@ -138,11 +138,11 @@ final class Aliases
      *
      * Note, this method does not check if the returned path exists or not.
      *
-     * @param string $alias the alias to be translated.
+     * @param string $alias The alias to be translated.
      *
-     * @throws InvalidArgumentException if the root alias is not previously registered.
+     * @throws InvalidArgumentException If the root alias is not previously registered.
      *
-     * @return string the path corresponding to the alias.
+     * @return string The path corresponding to the alias.
      *
      * @see setAlias()
      */
