@@ -6,6 +6,10 @@ namespace Yiisoft\Aliases;
 
 use InvalidArgumentException;
 
+use function array_key_exists;
+use function is_array;
+use function is_string;
+
 final class Aliases
 {
     /**
@@ -74,7 +78,7 @@ final class Aliases
             } else {
                 $this->aliases[$root] = [$alias => $path];
             }
-        } elseif (\is_string($this->aliases[$root])) {
+        } elseif (is_string($this->aliases[$root])) {
             if ($pos === false) {
                 $this->aliases[$root] = $path;
             } else {
@@ -103,7 +107,7 @@ final class Aliases
         $root = $pos === false ? $alias : substr($alias, 0, $pos);
 
         if (array_key_exists($root, $this->aliases)) {
-            if (\is_array($this->aliases[$root])) {
+            if (is_array($this->aliases[$root])) {
                 unset($this->aliases[$root][$alias]);
             } elseif ($pos === false) {
                 unset($this->aliases[$root]);
@@ -134,11 +138,11 @@ final class Aliases
      *
      * Note, this method does not check if the returned path exists or not.
      *
-     * @param string $alias the alias to be translated.
+     * @param string $alias The alias to be translated.
      *
-     * @throws InvalidArgumentException if the root alias is not previously registered.
+     * @throws InvalidArgumentException If the root alias is not previously registered.
      *
-     * @return string the path corresponding to the alias.
+     * @return string The path corresponding to the alias.
      *
      * @see setAlias()
      */
@@ -179,26 +183,6 @@ final class Aliases
         );
     }
 
-    private function findAlias(string $alias): ?string
-    {
-        $pos = strpos($alias, '/');
-        $root = $pos === false ? $alias : substr($alias, 0, $pos);
-
-        if (array_key_exists($root, $this->aliases)) {
-            if (\is_string($this->aliases[$root])) {
-                return $pos === false ? $this->aliases[$root] : $this->aliases[$root] . substr($alias, $pos);
-            }
-
-            foreach ($this->aliases[$root] as $name => $path) {
-                if (strpos($alias . '/', $name . '/') === 0) {
-                    return $path . substr($alias, strlen($name));
-                }
-            }
-        }
-
-        return null;
-    }
-
     /**
      * Returns all path aliases translated into an actual paths.
      *
@@ -218,6 +202,26 @@ final class Aliases
         }
 
         return $result;
+    }
+
+    private function findAlias(string $alias): ?string
+    {
+        $pos = strpos($alias, '/');
+        $root = $pos === false ? $alias : substr($alias, 0, $pos);
+
+        if (array_key_exists($root, $this->aliases)) {
+            if (is_string($this->aliases[$root])) {
+                return $pos === false ? $this->aliases[$root] : $this->aliases[$root] . substr($alias, $pos);
+            }
+
+            foreach ($this->aliases[$root] as $name => $path) {
+                if (strpos($alias . '/', $name . '/') === 0) {
+                    return $path . substr($alias, strlen($name));
+                }
+            }
+        }
+
+        return null;
     }
 
     private function isAlias(string $alias): bool
