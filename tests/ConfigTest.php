@@ -58,5 +58,4 @@ final class ConfigTest extends TestCase
     {
         return require dirname(__DIR__) . '/config/params.php';
     }
-
 }
