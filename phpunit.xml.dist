@@ -24,6 +24,7 @@
     <coverage>
         <include>
             <directory>./src</directory>
+            <directory>./config</directory>
         </include>
     </coverage>
 </phpunit>
