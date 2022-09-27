@@ -19,8 +19,6 @@ final class Aliases
     private array $aliases = [];
 
     /**
-     * @param array $config
-     *
      * @psalm-param array<string, string> $config
      *
      * @throws InvalidArgumentException if $path is an invalid alias.
@@ -215,7 +213,7 @@ final class Aliases
             }
 
             foreach ($this->aliases[$root] as $name => $path) {
-                if (strpos($alias . '/', $name . '/') === 0) {
+                if (str_starts_with($alias . '/', $name . '/')) {
                     return $path . substr($alias, strlen($name));
                 }
             }
