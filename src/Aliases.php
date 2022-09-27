@@ -19,7 +19,6 @@ final class Aliases
     private array $aliases = [];
 
     /**
-     *
      * @psalm-param array<string, string> $config
      *
      * @throws InvalidArgumentException if $path is an invalid alias.
