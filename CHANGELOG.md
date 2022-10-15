@@ -2,6 +2,7 @@
 
 ## 2.1.0 under development
 
+- Enh: Add composer require checker into CI
 - New #44: Add method `Aliases::getArray()` that bulk translates path aliases into actual paths (vjik)
 
 ## 2.0.0 April 13, 2021
