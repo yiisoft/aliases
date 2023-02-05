@@ -1,6 +1,6 @@
 # Yii Aliases Change Log
 
-## 2.1.0 under development
+## 3.0.0 under development
 
 - New #44: Add method `Aliases::getArray()` that bulk translates path aliases into actual paths (@vjik)
 - Chg #59: Adapt configuration group names to Yii conventions (@vjik)
