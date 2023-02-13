@@ -58,7 +58,7 @@
         },
         "config-plugin": {
             "params": "params.php",
-            "common": "common.php"
+            "di": "di.php"
         }
     },
     "scripts": {
