@@ -10,6 +10,40 @@ use Yiisoft\Aliases\Aliases;
 
 final class AliasesTest extends TestCase
 {
+    public function dataBase(): array
+    {
+        return [
+            ['', ['@url' => ''], '@url'],
+            ['/', ['@url' => ''], '@url/'],
+            ['/about', ['@url' => ''], '@url/about'],
+            ['/', ['@url' => '/'], '@url'],
+            ['/', ['@url' => '/'], '@url/'],
+            ['/about', ['@url' => '/'], '@url/about'],
+            ['test', ['@url' => 'test'], '@url'],
+            ['test/', ['@url' => 'test'], '@url/'],
+            ['test/about', ['@url' => 'test'], '@url/about'],
+            ['test/', ['@url' => 'test/'], '@url'],
+            ['test/', ['@url' => 'test/'], '@url/'],
+            ['test/about', ['@url' => 'test/'], '@url/about'],
+            ['/test', ['@url' => '/test'], '@url'],
+            ['/test/', ['@url' => '/test'], '@url/'],
+            ['/test/about', ['@url' => '/test'], '@url/about'],
+            ['/test/', ['@url' => '/test/'], '@url'],
+            ['/test/', ['@url' => '/test/'], '@url/'],
+            ['/test/about', ['@url' => '/test/'], '@url/about'],
+        ];
+    }
+
+    /**
+     * @dataProvider dataBase
+     */
+    public function testBase(string $expectedPath, array $config, string $aliasPath): void
+    {
+        $aliases = new Aliases($config);
+
+        $this->assertSame($expectedPath, $aliases->get($aliasPath));
+    }
+
     public function testNonAlias(): void
     {
         $aliases = new Aliases();
@@ -73,8 +107,8 @@ final class AliasesTest extends TestCase
             '@backward' => 'backward\\\\',
         ]);
 
-        $this->assertSame('forward', $aliases->get('@forward'));
-        $this->assertSame('backward', $aliases->get('@backward'));
+        $this->assertSame('forward/test', $aliases->get('@forward/test'));
+        $this->assertSame('backward/test', $aliases->get('@backward/test'));
     }
 
     public function testSetOverridesExistingValue(): void

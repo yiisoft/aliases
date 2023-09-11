@@ -2,7 +2,7 @@
 
 ## 3.0.1 under development
 
-- no changes in this release.
+- Bug #67: Allow use root directory (`/` or `\`) as path (@vjik) 
 
 ## 3.0.0 February 13, 2023
 

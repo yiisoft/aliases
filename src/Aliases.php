@@ -9,6 +9,7 @@ use InvalidArgumentException;
 use function array_key_exists;
 use function is_array;
 use function is_string;
+use function strlen;
 
 final class Aliases
 {
@@ -69,7 +70,6 @@ final class Aliases
         /** @psalm-var string $root */
         $root = $pos === false ? $alias : substr($alias, 0, $pos);
 
-        $path = rtrim($path, '\\/');
         if (!array_key_exists($root, $this->aliases)) {
             if ($pos === false) {
                 $this->aliases[$root] = $path;
@@ -209,17 +209,29 @@ final class Aliases
 
         if (array_key_exists($root, $this->aliases)) {
             if (is_string($this->aliases[$root])) {
-                return $pos === false ? $this->aliases[$root] : $this->aliases[$root] . substr($alias, $pos);
+                return $pos === false
+                    ? $this->aliases[$root]
+                    : $this->joinPathAndSubpath($this->aliases[$root], substr($alias, $pos));
             }
 
             foreach ($this->aliases[$root] as $name => $path) {
                 if (strpos($alias . '/', $name . '/') === 0) {
-                    return $path . substr($alias, strlen($name));
+                    return $this->joinPathAndSubpath($path, substr($alias, strlen($name)));
                 }
             }
         }
 
         return null;
+    }
+
+    private function joinPathAndSubpath(string $path, string $subpath): string
+    {
+        if ($path === '/' || $path === '\\') {
+            $subpath = ltrim($subpath, '\\/');
+        } else {
+            $path = rtrim($path, '\\/');
+        }
+        return $path . $subpath;
     }
 
     private function isAlias(string $alias): bool
