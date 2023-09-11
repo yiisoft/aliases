@@ -213,7 +213,7 @@ final class Aliases
             }
 
             foreach ($this->aliases[$root] as $name => $path) {
-                if (str_starts_with($alias . '/', $name . '/')) {
+                if (strpos($alias . '/', $name . '/') === 0) {
                     return $path . substr($alias, strlen($name));
                 }
             }
