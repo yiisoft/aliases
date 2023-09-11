@@ -2,7 +2,7 @@
 
 ## 3.0.1 under development
 
-- Bug #67: Allow use root directory (`/` or `\`) as path (@vjik) 
+- Bug #67: Don't trim slash on the end of alias path (@vjik) 
 
 ## 3.0.0 February 13, 2023
 
