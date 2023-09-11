@@ -28,7 +28,7 @@ while `@bin` may store `@vendor/bin`.
 The package could be installed with composer:
 
 ```shell
-composer require yiisoft/aliases --prefer-dist
+composer require yiisoft/aliases
 ```
 
 ## General usage
@@ -54,11 +54,9 @@ the path.
 
 The path could be:
 
-- a directory or a file path (e.g. `/tmp`, `/tmp/main.txt`)
-- a URL (e.g. `http://www.yiiframework.com`)
-- a path alias (e.g. `@yii/base`). It will be resolved on {@see get()} call.
-
-Any trailing `/` and `\` characters in the given path will be trimmed.
+- a directory or a file path (e.g. `/tmp`, `/tmp/main.txt`);
+- a URL (e.g. `http://www.yiiframework.com`);
+- a path alias (e.g. `@yii/base`), it will be resolved on `get()` call.
 
 To bulk translate path aliases into actual paths use `getArray()` method:
 
