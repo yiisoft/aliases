@@ -47,17 +47,14 @@ final class Aliases
      * Note that this method does not check if the given path exists or not. All it does is
      * to associate the alias with the path.
      *
-     * Any trailing '/' and '\' characters in the given path will be trimmed.
-     *
-     * @param string $alias the alias name (e.g. "@vendor"). It must start with a '@' character.
+     * @param string $alias The alias name (e.g. "@vendor"). It must start with a '@' character.
      * It may contain the forward slash '/' which serves as boundary character when performing
      * alias translation by {@see get()}.
-     * @param string $path the path corresponding to the alias.
-     * Trailing '/' and '\' characters will be trimmed. This can be
+     * @param string $path The path corresponding to the alias. This can be:
      *
-     * - a directory or a file path (e.g. `/tmp`, `/tmp/main.txt`)
-     * - a URL (e.g. `http://www.yiiframework.com`)
-     * - a path alias (e.g. `@vendor/yiisoft`). It will be resolved on {@see get()} call.
+     * - a directory or a file path (e.g. `/tmp`, `/tmp/main.txt`);
+     * - a URL (e.g. `http://www.yiiframework.com`);
+     * - a path alias (e.g. `@vendor/yiisoft`), it will be resolved on {@see get()} call.
      *
      * @see get()
      */
