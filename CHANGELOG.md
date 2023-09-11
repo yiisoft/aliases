@@ -2,7 +2,6 @@
 
 ## 3.0.1 under development
 
-- New #44: Add method `Aliases::getArray()` that bulk translates path aliases into actual paths (vjik)
 - no changes in this release.
 
 ## 3.0.0 February 13, 2023
