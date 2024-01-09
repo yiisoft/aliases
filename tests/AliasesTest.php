@@ -61,7 +61,7 @@ final class AliasesTest extends TestCase
         $aliases = new Aliases();
 
         $erroneousAlias = '@alias_not_exists';
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(sprintf('Invalid path alias: %s', $erroneousAlias));
         $aliases->get($erroneousAlias);
     }
