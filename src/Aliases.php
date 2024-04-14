@@ -55,7 +55,7 @@ final class Aliases
      * Trailing '/' and '\' characters will be trimmed. This can be
      *
      * - a directory or a file path (e.g. `/tmp`, `/tmp/main.txt`)
-     * - a URL (e.g. `http://www.yiiframework.com`)
+     * - a URL (e.g. `https://www.yiiframework.com`)
      * - a path alias (e.g. `@vendor/yiisoft`). It will be resolved on {@see get()} call.
      *
      * @see get()

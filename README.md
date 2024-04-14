@@ -55,7 +55,7 @@ the path.
 The path could be:
 
 - a directory or a file path (e.g. `/tmp`, `/tmp/main.txt`)
-- a URL (e.g. `http://www.yiiframework.com`)
+- a URL (e.g. `https://www.yiiframework.com`)
 - a path alias (e.g. `@yii/base`). It will be resolved on {@see get()} call.
 
 Any trailing `/` and `\` characters in the given path will be trimmed.
@@ -85,7 +85,7 @@ $aliases = new Aliases([
 echo $aliases->get('@vendor/test');
 ```
 
-That would output `/special/location` since `@vendor/test` is more specific match than `@vendor`. 
+That would output `/special/location` since `@vendor/test` is more specific match than `@vendor`.
 
 ### Alias removal
 
