@@ -28,7 +28,7 @@ while `@bin` may store `@vendor/bin`.
 The package could be installed with [composer](https://getcomposer.org/download/)
 
 ```shell
-composer require yiisoft/aliases --prefer-dist
+composer require yiisoft/aliases
 ```
 
 ## General usage
