@@ -6,13 +6,13 @@
     <br>
 </p>
 
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/aliases/v/stable.png)](https://packagist.org/packages/yiisoft/aliases)
-[![Total Downloads](https://poser.pugx.org/yiisoft/aliases/downloads.png)](https://packagist.org/packages/yiisoft/aliases)
-[![Build Status](https://github.com/yiisoft/aliases/workflows/build/badge.svg)](https://github.com/yiisoft/aliases/actions?query=workflow%3Abuild)
+[![Latest Stable Version](https://poser.pugx.org/yiisoft/aliases/v)](https://packagist.org/packages/yiisoft/aliases)
+[![Total Downloads](https://poser.pugx.org/yiisoft/aliases/downloads)](https://packagist.org/packages/yiisoft/aliases)
+[![Build status](https://github.com/yiisoft/aliases/actions/workflows/build.yml/badge.svg)](https://github.com/yiisoft/aliases/actions/workflows/build.yml)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yiisoft/aliases/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yiisoft/aliases/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/yiisoft/aliases/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/yiisoft/aliases/?branch=master)
 [![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https://badge-api.stryker-mutator.io/github.com/yiisoft/aliases/master)](https://dashboard.stryker-mutator.io/reports/github.com/yiisoft/aliases/master)
-[![static analysis](https://github.com/yiisoft/aliases/workflows/static%20analysis/badge.svg)](https://github.com/yiisoft/aliases/actions?query=workflow%3A%22static+analysis%22)
+[![Static analysis](https://github.com/yiisoft/aliases/actions/workflows/static.yml/badge.svg?branch=master)](https://github.com/yiisoft/aliases/actions/workflows/static.yml?query=branch%3Amaster)
 [![type-coverage](https://shepherd.dev/github/yiisoft/aliases/coverage.svg)](https://shepherd.dev/github/yiisoft/aliases)
 
 The package aim is to store path aliases, i.e. short name representing a long path (a file path, a URL, etc.).
