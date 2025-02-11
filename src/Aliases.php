@@ -21,7 +21,7 @@ final class Aliases
     /**
      * @psalm-param array<string, string> $config
      *
-     * @throws InvalidArgumentException if $path is an invalid alias.
+     * @throws InvalidArgumentException If `$path` is an invalid alias.
      *
      * @see set()
      * @see get()

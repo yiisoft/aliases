@@ -2,7 +2,7 @@
 
 ## 3.0.1 under development
 
-- no changes in this release.
+- Chg #81: Change PHP constraint in `composer.json` to `~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0` (@vjik)
 
 ## 3.0.0 February 13, 2023
 
