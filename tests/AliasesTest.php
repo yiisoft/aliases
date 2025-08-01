@@ -90,7 +90,7 @@ final class AliasesTest extends TestCase
 
     public function testSetWithoutAt(): void
     {
-        $aliases = new ALiases();
+        $aliases = new Aliases();
         $aliases->set('yii', '/yii');
 
         $path = $aliases->get('@yii/hello');
