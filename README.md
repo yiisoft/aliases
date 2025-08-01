@@ -20,7 +20,7 @@ while `@bin` may store `@vendor/bin`.
 
 ## Requirements
 
-- PHP 7.4 or higher.
+- PHP 8.1 or higher.
 
 ## Installation
 
