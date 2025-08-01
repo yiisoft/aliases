@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Yiisoft\Aliases\Tests;
 
 use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Yiisoft\Aliases\Aliases;
 
@@ -170,7 +171,7 @@ final class AliasesTest extends TestCase
         $this->assertEquals($expected, $aliases->getAll());
     }
 
-    public function dataGetArray(): array
+    public static function dataGetArray(): array
     {
         return [
             'empty' => [[], []],
@@ -178,9 +179,7 @@ final class AliasesTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider dataGetArray
-     */
+    #[DataProvider('dataGetArray')]
     public function testGetArray(array $expected, array $aliases): void
     {
         $service = new Aliases([
