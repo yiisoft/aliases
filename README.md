@@ -99,6 +99,23 @@ $aliases = new Aliases([
 $aliases->remove('@root');
 ```
 
+### Alias references
+
+The package provides `AliasReference` class that implements `ReferenceInterface` from
+[Yii Definition](https://github.com/yiisoft/definitions). It allows you to create references to aliases
+that will be resolved at runtime:
+
+```php
+// Create a reference to an alias
+$reference = \Yiisoft\Aliases\AliasReference::to('@public/assets');
+
+// The reference will be resolved when needed
+$configPath = $reference->resolve($container);
+```
+
+This is particularly useful in dependency injection configurations where you want to inject resolved paths
+but the aliases are not available at configuration time.
+
 ## Documentation
 
 - [Internals](docs/internals.md)
