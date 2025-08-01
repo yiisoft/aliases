@@ -18,7 +18,7 @@ use function PHPUnit\Framework\assertSame;
 final class AliasReferenceTest extends TestCase
 {
     #[TestWith(['/path/to/app', '@app'])]
-    #[TestWith(['/path/to/app/runtime/test', '@runtime/test'])]
+    #[TestWith(['/path/to/app/runtime/logs', '@runtime/logs'])]
     #[TestWith(['/test/path', '/test/path'])]
     public function testResolve(string $expected, string $alias): void
     {
