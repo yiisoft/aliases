@@ -25,7 +25,7 @@ final class AliasReferenceTest extends TestCase
         $container = new SimpleContainer([
             Aliases::class => new Aliases([
                 '@app' => '/path/to/app',
-                '@runtime' => '@app/runtime'
+                '@runtime' => '@app/runtime',
             ]),
         ]);
 
