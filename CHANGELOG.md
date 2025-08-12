@@ -1,10 +1,10 @@
 # Yii Aliases Change Log
 
-## 3.0.1 under development
+## 3.1.0 August 12, 2025
 
-- Chg #83: Bump PHP minimal version to 8.1 (@vjik)
-- Chg #81, #83: Change PHP constraint in `composer.json` to `8.1 - 8.4` (@vjik)
 - New #84: Add `AliasReference` (@vjik)
+- Chg #81, #83: Change PHP constraint in `composer.json` to `8.1 - 8.4` (@vjik)
+- Chg #83: Bump PHP minimal version to 8.1 (@vjik)
 
 ## 3.0.0 February 13, 2023
 
