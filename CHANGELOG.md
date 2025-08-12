@@ -1,5 +1,9 @@
 # Yii Aliases Change Log
 
+## 3.1.1 under development
+
+- no changes in this release.
+
 ## 3.1.0 August 12, 2025
 
 - New #84: Add `AliasReference` (@vjik)
