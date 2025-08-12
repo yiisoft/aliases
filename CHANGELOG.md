@@ -4,6 +4,7 @@
 
 - Chg #83: Bump PHP minimal version to 8.1 (@vjik)
 - Chg #81, #83: Change PHP constraint in `composer.json` to `8.1 - 8.4` (@vjik)
+- New #84: Add `AliasReference` (@vjik)
 
 ## 3.0.0 February 13, 2023
 
