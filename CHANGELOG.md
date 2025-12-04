@@ -1,6 +1,6 @@
 # Yii Aliases Change Log
 
-## 3.1.1 under development
+## 3.1.1 December 04, 2025
 
 - Enh #85: Add PHP 8.5 support (@vjik)
 
