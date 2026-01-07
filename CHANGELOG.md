@@ -2,7 +2,7 @@
 
 ## 3.1.2 under development
 
-- Bug #87: Fix PHPDoc tags `@see` (@msprikov)
+- Bug #87: Fix PHPDoc tags `@see` (@mspirkov)
 
 ## 3.1.1 December 04, 2025
 
