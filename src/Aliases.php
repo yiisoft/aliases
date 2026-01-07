@@ -23,8 +23,8 @@ final class Aliases
      *
      * @throws InvalidArgumentException If `$path` is an invalid alias.
      *
-     * @see set()
-     * @see get()
+     * @see Aliases::set()
+     * @see Aliases::get()
      */
     public function __construct(array $config = [])
     {
@@ -50,15 +50,15 @@ final class Aliases
      *
      * @param string $alias the alias name (e.g. "@vendor"). It must start with a '@' character.
      * It may contain the forward slash '/' which serves as boundary character when performing
-     * alias translation by {@see get()}.
+     * alias translation by {@see Aliases::get()}.
      * @param string $path the path corresponding to the alias.
      * Trailing '/' and '\' characters will be trimmed. This can be
      *
      * - a directory or a file path (e.g. `/tmp`, `/tmp/main.txt`)
      * - a URL (e.g. `https://www.yiiframework.com`)
-     * - a path alias (e.g. `@vendor/yiisoft`). It will be resolved on {@see get()} call.
+     * - a path alias (e.g. `@vendor/yiisoft`). It will be resolved on {@see Aliases::get()} call.
      *
-     * @see get()
+     * @see Aliases::get()
      */
     public function set(string $alias, string $path): void
     {
@@ -142,7 +142,7 @@ final class Aliases
      *
      * @return string The path corresponding to the alias.
      *
-     * @see setAlias()
+     * @see Aliases::set()
      */
     public function get(string $alias): string
     {
