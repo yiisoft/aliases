@@ -55,7 +55,7 @@ The path could be:
 
 - a directory or a file path (e.g. `/tmp`, `/tmp/main.txt`)
 - a URL (e.g. `https://www.yiiframework.com`)
-- a path alias (e.g. `@yii/base`). It will be resolved on {@see get()} call.
+- a path alias (e.g. `@yii/base`). It will be resolved on `get()` call.
 
 Any trailing `/` and `\` characters in the given path will be trimmed.
 
