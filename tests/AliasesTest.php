@@ -9,6 +9,8 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Yiisoft\Aliases\Aliases;
 
+use function sprintf;
+
 final class AliasesTest extends TestCase
 {
     public function testNonAlias(): void

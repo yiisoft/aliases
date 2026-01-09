@@ -9,6 +9,8 @@ use Yiisoft\Aliases\Aliases;
 use Yiisoft\Di\Container;
 use Yiisoft\Di\ContainerConfig;
 
+use function dirname;
+
 final class ConfigTest extends TestCase
 {
     public function testBase(): void
