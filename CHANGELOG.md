@@ -3,6 +3,7 @@
 ## 3.1.2 under development
 
 - Bug #87: Fix PHPDoc tags `@see` (@mspirkov)
+- Enh #89: Explicitly import functions in "use" section (@mspirkov)
 
 ## 3.1.1 December 04, 2025
 
