@@ -4,6 +4,7 @@
 
 - Bug #87: Fix PHPDoc tags `@see` (@mspirkov)
 - Enh #89: Explicitly import functions in "use" section (@mspirkov)
+- Enh #90: Remove unnecessary files from Composer package (@mspirkov)
 
 ## 3.1.1 December 04, 2025
 
