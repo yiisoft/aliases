@@ -29,12 +29,12 @@
         "php": "8.1 - 8.5"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.92.4",
         "bamarni/composer-bin-plugin": "^1.8.3",
-        "maglnet/composer-require-checker": "^4.7.1",
+        "friendsofphp/php-cs-fixer": "^3.92.4",
         "phpunit/phpunit": "^10.5.48",
         "psr/container": "^2.0.2",
         "rector/rector": "^2.1.2",
+        "shipmonk/composer-dependency-analyser": "^1.8",
         "spatie/phpunit-watcher": "^1.24.0",
         "yiisoft/definitions": "^3.4",
         "yiisoft/di": "^1.4",
@@ -72,6 +72,7 @@
         }
     },
     "scripts": {
+        "dependency-analyser": "composer-dependency-analyser",
         "test": "phpunit --testdox --no-interaction",
         "test-watch": "phpunit-watcher watch"
     }
