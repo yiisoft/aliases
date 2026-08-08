@@ -11,6 +11,5 @@ return (new Configuration())
     ->addPathToScan(__DIR__ . '/config', isDev: false)
     ->addPathToScan(__DIR__ . '/src', isDev: false)
     ->addPathToScan(__DIR__ . '/tests', isDev: true)
-    // AliasReference optionally implements/type-hints these interfaces without requiring
-    // the packages at runtime; previously whitelisted the same way in composer-require-checker.json.
+    // AliasReference optionally implements these interfaces without requiring the packages at runtime
     ->ignoreErrorsOnPackages(['psr/container', 'yiisoft/definitions'], [ErrorType::DEV_DEPENDENCY_IN_PROD]);
